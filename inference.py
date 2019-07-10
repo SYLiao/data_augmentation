@@ -44,3 +44,7 @@ class DeepLabModel(object):
             })
         seg_map = batch_seg_map[0]
         return image, seg_map
+
+def vis_segmentation(image, seg_map, file):
+    seg_image = get_dataset_colormap.label_to_color_image(seg_map, get_dataset_colormap.get_pascal_name()).astype(np.uint8)
+    cv.imwrite(object_path + '/' + file.split('.')[0] + '.jpg', seg_image)
